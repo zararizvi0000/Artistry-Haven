@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About – Warda Waseem Art Gallery</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <style>
+        /* ===== NAVBAR OVERRIDE ===== */
+        .navbar {
+            background: #ffffff !important;
+            position: relative !important; /* NOT sticky */
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+        .navbar.scrolled {
+            background: #ffffff !important;
+            backdrop-filter: none !important;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+        /* Remove dropdown */
+        .dropdown-content {
+            display: none !important;
+        }
+        .dropdown .dropbtn i {
+            display: none !important;
+        }
+        
+        /* ===== EXTRA CSS FOR ABOUT PAGE ===== */
+        
+        /* FAQ Grid */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(212, 163, 115, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+        }
+        
+        .faq-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #2c241a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .faq-item h4::before {
+            content: '✦ ';
+            color: #d4a373;
+        }
+        
+        .faq-item p {
+            color: #5a4e3e;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        
+        /* CTA Section - Newsletter Box styled differently for about page */
+        .about-cta .newsletter-box {
+            background: #f8f4ef;
+            border-radius: 30px;
+            padding: 4rem 3rem;
+        }
+        
+        .about-cta .newsletter-box h2 {
+            color: #2c241a;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+        }
+        
+        .about-cta .newsletter-box p {
+            color: #5a4e3e;
+            margin-bottom: 2rem;
+        }
+        
+        /* Hero buttons on about page */
+        .hero-buttons {
+            display: flex !important;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        /* Responsive fixes */
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-cta .newsletter-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .about-cta .newsletter-box h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ============================================= */
+        /* ===== ANIMATION SUITE – About Page ========== */
+        /* ============================================= */
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            0% { opacity: 0; transform: translateX(-40px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(40px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes scaleIn {
+            0% { opacity: 0; transform: scale(0.92); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes softPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes floatGlow {
+            0% { box-shadow: 0 0 0 0 rgba(212, 163, 115, 0.2); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 163, 115, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 163, 115, 0); }
+        }
+
+        @keyframes gentleFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- hero animations --- */
+        .hero-subtitle {
+            animation: fadeUp 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+        }
+        .hero-heading {
+            animation: fadeUp 1s cubic-bezier(0.2, 0.9, 0.3, 1) 0.15s both;
+        }
+        .hero-desc {
+            animation: fadeUp 1s cubic-bezier(0.2, 0.9, 0.3, 1) 0.3s both;
+        }
+        .hero-buttons {
+            animation: fadeUp 1s cubic-bezier(0.2, 0.9, 0.3, 1) 0.45s both;
+        }
+        .hero-image-wrapper {
+            animation: slideInRight 1.1s cubic-bezier(0.2, 0.9, 0.3, 1) 0.2s both;
+        }
+
+        /* hero highlight breathing */
+        .hero-heading .highlight {
+            display: inline-block;
+            animation: softPulse 3.5s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        /* hero image gentle float */
+        .hero-image-wrapper img {
+            transition: transform 0.4s ease;
+            animation: gentleFloat 5s infinite ease-in-out;
+        }
+        .hero-image-wrapper img:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- section titles --- */
+        .section-title h2 {
+            animation: fadeUp 0.8s ease 0.1s both;
+        }
+        .section-title p {
+            animation: fadeUp 0.8s ease 0.25s both;
+        }
+
+        /* --- about story section --- */
+        .about-artist-image {
+            animation: slideInLeft 0.9s ease 0.2s both;
+        }
+        .about-artist-content .badge {
+            animation: fadeUp 0.7s ease 0.25s both;
+        }
+        .about-artist-content h2 {
+            animation: fadeUp 0.8s ease 0.35s both;
+        }
+        .about-artist-content p {
+            animation: fadeUp 0.8s ease 0.45s both;
+        }
+
+        /* --- FAQ cards --- */
+        .faq-item {
+            animation: scaleIn 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .faq-item:nth-child(1) { animation-delay: 0.05s; }
+        .faq-item:nth-child(2) { animation-delay: 0.15s; }
+        .faq-item:nth-child(3) { animation-delay: 0.25s; }
+        .faq-item:nth-child(4) { animation-delay: 0.35s; }
+        .faq-item:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+        }
+
+        /* --- CTA newsletter box --- */
+        .about-cta .newsletter-box {
+            animation: scaleIn 0.9s ease 0.2s both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .about-cta .newsletter-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        }
+        .about-cta .newsletter-box h2 {
+            animation: fadeUp 0.8s ease 0.35s both;
+        }
+        .about-cta .newsletter-box p {
+            animation: fadeUp 0.8s ease 0.5s both;
+        }
+        .about-cta .newsletter-box .btn {
+            animation: fadeUp 0.8s ease 0.65s both;
+        }
+
+        /* --- buttons --- */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+            animation: softPulse 3s infinite ease-in-out;
+        }
+        .btn-primary:hover {
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+        }
+
+        /* --- nav links --- */
+        .nav-menu ul li {
+            animation: fadeIn 0.7s ease both;
+        }
+        .nav-menu ul li:nth-child(1) { animation-delay: 0.1s; }
+        .nav-menu ul li:nth-child(2) { animation-delay: 0.18s; }
+        .nav-menu ul li:nth-child(3) { animation-delay: 0.26s; }
+        .nav-menu ul li:nth-child(4) { animation-delay: 0.34s; }
+        .nav-menu ul li:nth-child(5) { animation-delay: 0.42s; }
+        .nav-logo a {
+            animation: fadeIn 0.9s ease 0.1s both;
+        }
+
+        /* --- footer --- */
+        .footer-col {
+            animation: fadeUp 0.8s ease both;
+        }
+        .footer-col:nth-child(1) { animation-delay: 0.05s; }
+        .footer-col:nth-child(2) { animation-delay: 0.15s; }
+        .footer-col:nth-child(3) { animation-delay: 0.25s; }
+        .footer-col:nth-child(4) { animation-delay: 0.35s; }
+
+        /* --- sections smooth entrance --- */
+        .section {
+            animation: fadeIn 0.6s ease both;
+        }
+        .section:nth-of-type(1) { animation-delay: 0.0s; }
+        .section:nth-of-type(2) { animation-delay: 0.1s; }
+        .section:nth-of-type(3) { animation-delay: 0.2s; }
+        .section:nth-of-type(4) { animation-delay: 0.3s; }
+
+        /* --- will-change for performance --- */
+        .faq-item, .btn-primary, .hero-image-wrapper, .newsletter-box {
+            will-change: transform, opacity;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====================== NAVBAR ====================== -->
+    <header id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Artistry Haven</a>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="shop.html">Shop</a></li>  <!-- DROPDOWN REMOVED -->
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====================== HERO SPLIT ====================== -->
+    <section class="hero-split">
+        <div class="hero-left">
+            <span class="hero-subtitle">Our Story</span>
+            <h1 class="hero-heading">Art <span class="highlight">in Motion!</span></h1>
+            <p class="hero-desc">From canvas to sculpture — every piece carries a fragment of our soul.</p>
+            <div class="hero-buttons">
+                <a href="shop.html" class="btn btn-primary">Explore Art</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-image-wrapper">
+                <img src="./images/about.png" alt="Gallery interior" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== OUR STORY ====================== -->
+    <section class="section">
+        <div class="container about-artist-grid">
+            <div class="about-artist-image">
+                <img src="./images/about2.png" alt="Art studio" />
+            </div>
+            <div class="about-artist-content">
+                <span class="badge">Creative Journey</span>
+                <h2>Warda Waseem · Vision</h2>
+                <p>Warda Waseem began her artistic voyage in the ancient streets of Lahore, inspired by Mughal miniatures and Sufi poetry. Today, her work hangs in private collections across three continents.</p>
+                <p><strong>Mission:</strong> To make fine art accessible, personal, and everlasting. <br /><strong>Vision:</strong> A world where art is not just seen, but felt.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== FAQ ====================== -->
+    <section class="section" style="background: #f8f4ef;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Do you take commissions?</h4>
+                    <p>Yes! We love creating bespoke pieces tailored to your vision and space.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What is your return policy?</h4>
+                    <p>Full satisfaction guarantee within 14 days of delivery. Art must be returned in original condition.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you ship internationally?</h4>
+                    <p>Yes, worldwide shipping with tracking and insurance available.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I visit the gallery?</h4>
+                    <p>Absolutely! We welcome visitors by appointment. Contact us to schedule a visit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== CTA ====================== -->
+    <section class="section about-cta">
+        <div class="container">
+            <div class="newsletter-box" style="background: #f8f4ef; border-radius: 30px; padding: 4rem 3rem; text-align: center;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #2c241a; margin-bottom: 0.5rem;">Let's Create Something Beautiful</h2>
+                <p style="color: #5a4e3e; margin-bottom: 2rem; font-size: 1.1rem;">Reach out to discuss your vision.</p>
+                <a href="contact.html" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>Warda Waseem</h3>
+                <p>Fine Art Gallery · Karachi, Pakistan</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="shop.html?category=paintings">Paintings</a></li>
+                    <li><a href="shop.html?category=pencil-sketch">Pencil Sketch</a></li>
+                    <li><a href="shop.html?category=sculpture">Sculpture</a></li>
+                    <li><a href="shop.html?category=wood-carving">Wood Carving</a></li>
+                    <li><a href="shop.html?category=calligraphy">Calligraphy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +92 300 1234567</li>
+                    <li><i class="fas fa-envelope"></i> hello@wardawaseemart.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Karachi, Pakistan</li>
+                    <li><i class="fas fa-clock"></i> Mon–Sat 10am–8pm</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warda Waseem Art Gallery · Home</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <style>
+        /* ===== NAVBAR OVERRIDE ===== */
+        .navbar {
+            background: #ffffff !important;
+            position: relative !important; /* NOT sticky */
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+        .navbar.scrolled {
+            background: #ffffff !important;
+            backdrop-filter: none !important;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+        /* Remove dropdown */
+        .dropdown-content {
+            display: none !important;
+        }
+        .dropdown .dropbtn i {
+            display: none !important;
+        }
+
+        /* ============================================= */
+        /* ===== ANIMATION SUITE – add motion & life === */
+        /* ============================================= */
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            0% { opacity: 0; transform: translateX(-40px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(40px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes scaleIn {
+            0% { opacity: 0; transform: scale(0.92); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes softPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes floatGlow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.2); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+
+        /* --- apply to elements, with staggered delays --- */
+        .hero-subtitle {
+            animation: fadeUp 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+        }
+        .hero-heading {
+            animation: fadeUp 1s cubic-bezier(0.2, 0.9, 0.3, 1) 0.15s both;
+        }
+        .hero-desc {
+            animation: fadeUp 1s cubic-bezier(0.2, 0.9, 0.3, 1) 0.3s both;
+        }
+        .hero-buttons {
+            animation: fadeUp 1s cubic-bezier(0.2, 0.9, 0.3, 1) 0.45s both;
+        }
+        .hero-image-wrapper {
+            animation: slideInRight 1.1s cubic-bezier(0.2, 0.9, 0.3, 1) 0.2s both;
+        }
+
+        /* section titles */
+        .section-title h2 {
+            animation: fadeUp 0.8s ease 0.1s both;
+        }
+        .section-title p {
+            animation: fadeUp 0.8s ease 0.25s both;
+        }
+
+        /* category cards */
+        .category-card {
+            animation: scaleIn 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .category-card:nth-child(1) { animation-delay: 0.05s; }
+        .category-card:nth-child(2) { animation-delay: 0.15s; }
+        .category-card:nth-child(3) { animation-delay: 0.25s; }
+        .category-card:nth-child(4) { animation-delay: 0.35s; }
+        .category-card:nth-child(5) { animation-delay: 0.45s; }
+        .category-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+        }
+
+        /* about artist */
+        .about-artist-image {
+            animation: slideInLeft 0.9s ease 0.2s both;
+        }
+        .about-artist-content .badge {
+            animation: fadeUp 0.7s ease 0.25s both;
+        }
+        .about-artist-content h2 {
+            animation: fadeUp 0.8s ease 0.35s both;
+        }
+        .about-artist-content p {
+            animation: fadeUp 0.8s ease 0.45s both;
+        }
+        .about-artist-content .btn {
+            animation: fadeUp 0.8s ease 0.55s both;
+        }
+
+        /* why cards */
+        .why-card {
+            animation: fadeUp 0.7s ease both;
+        }
+        .why-card:nth-child(1) { animation-delay: 0.1s; }
+        .why-card:nth-child(2) { animation-delay: 0.2s; }
+        .why-card:nth-child(3) { animation-delay: 0.3s; }
+        .why-card:nth-child(4) { animation-delay: 0.4s; }
+        .why-card:hover {
+            transform: translateY(-6px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+        }
+        .why-card i {
+            animation: floatGlow 2.5s infinite ease-in-out;
+        }
+        .why-card:nth-child(2) i { animation-delay: 0.3s; }
+        .why-card:nth-child(3) i { animation-delay: 0.6s; }
+        .why-card:nth-child(4) i { animation-delay: 0.9s; }
+
+        /* testimonial cards */
+        .testimonial-card {
+            animation: scaleIn 0.6s ease both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:nth-child(1) { animation-delay: 0.05s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.15s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.25s; }
+        .testimonial-card:nth-child(4) { animation-delay: 0.35s; }
+        .testimonial-card:hover {
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.1);
+        }
+        .testimonial-card i.fa-star {
+            animation: softPulse 2s infinite ease-in-out;
+        }
+        .testimonial-card:nth-child(2) i.fa-star { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) i.fa-star { animation-delay: 0.4s; }
+        .testimonial-card:nth-child(4) i.fa-star { animation-delay: 0.6s; }
+
+        /* buttons */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+            animation: softPulse 3s infinite ease-in-out;
+        }
+        .btn-primary:hover {
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+        }
+
+        /* nav links */
+        .nav-menu ul li {
+            animation: fadeIn 0.7s ease both;
+        }
+        .nav-menu ul li:nth-child(1) { animation-delay: 0.1s; }
+        .nav-menu ul li:nth-child(2) { animation-delay: 0.18s; }
+        .nav-menu ul li:nth-child(3) { animation-delay: 0.26s; }
+        .nav-menu ul li:nth-child(4) { animation-delay: 0.34s; }
+        .nav-menu ul li:nth-child(5) { animation-delay: 0.42s; }
+        .nav-logo a {
+            animation: fadeIn 0.9s ease 0.1s both;
+        }
+
+        /* footer */
+        .footer-col {
+            animation: fadeUp 0.8s ease both;
+        }
+        .footer-col:nth-child(1) { animation-delay: 0.05s; }
+        .footer-col:nth-child(2) { animation-delay: 0.15s; }
+        .footer-col:nth-child(3) { animation-delay: 0.25s; }
+        .footer-col:nth-child(4) { animation-delay: 0.35s; }
+
+        /* additional gentle float on hero image */
+        .hero-image-wrapper img {
+            transition: transform 0.4s ease;
+            animation: softPulse 6s infinite ease-in-out;
+        }
+        .hero-image-wrapper img:hover {
+            transform: scale(1.02);
+        }
+
+        /* make all sections have smooth entrance */
+        .section {
+            animation: fadeIn 0.6s ease both;
+        }
+        .section:nth-of-type(1) { animation-delay: 0.0s; }
+        .section:nth-of-type(2) { animation-delay: 0.1s; }
+        .section:nth-of-type(3) { animation-delay: 0.2s; }
+        .section:nth-of-type(4) { animation-delay: 0.3s; }
+        .section:nth-of-type(5) { animation-delay: 0.4s; }
+
+        /* subtle hover for all cards */
+        .category-card img {
+            transition: transform 0.45s ease, filter 0.3s ease;
+        }
+        .category-card:hover img {
+            transform: scale(1.04);
+            filter: brightness(1.02);
+        }
+
+        /* ensure no layout shift from transforms */
+        .category-card, .why-card, .testimonial-card, .btn-primary, .hero-image-wrapper {
+            will-change: transform, opacity;
+        }
+
+        /* add a gentle breathing motion to the hero heading highlight */
+        .hero-heading .highlight {
+            display: inline-block;
+            animation: softPulse 3.5s infinite ease-in-out;
+            transform-origin: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====================== NAVBAR ====================== -->
+    <header id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Artistry Haven</a>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="shop.html">Shop</a></li>  <!-- DROPDOWN REMOVED -->
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====================== HERO SPLIT ====================== -->
+    <section class="hero-split">
+        <div class="hero-left">
+            <span class="hero-subtitle">Warda Waseem · Fine Art</span>
+            <h1 class="hero-heading">"Where <br />Art <span class="highlight">Breathes"</span></h1>
+            <p class="hero-desc">Original paintings, sculptures & calligraphy — each piece tells a story of elegance and emotion!</p>
+            <div class="hero-buttons">
+                <a href="shop.html" class="btn btn-primary">Shop Now</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-image-wrapper">
+                <img src="./images/page-banner.png" alt="Luxury art gallery" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== FEATURED CATEGORIES ====================== -->
+    <section class="section categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Categories</h2>
+                <p>Explore our curated collection</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="./images/one.png" alt="Paintings" />
+                    <h3>Paintings</h3>
+                    <p>Oil, acrylic & watercolor</p>
+                </div>
+                <div class="category-card">
+                    <img src="./images/two.png" alt="Pencil Sketch" />
+                    <h3>Pencil Sketch</h3>
+                    <p>Fine graphite & charcoal</p>
+                </div>
+                <div class="category-card">
+                    <img src="./images/three.png" alt="Sculpture" />
+                    <h3>Sculpture</h3>
+                    <p>Bronze, marble & wood</p>
+                </div>
+                <div class="category-card">
+                    <img src="./images/four.png" alt="Wood Carving" />
+                    <h3>Wood Carving</h3>
+                    <p>Handcrafted elegance</p>
+                </div>
+                <div class="category-card">
+                    <img src="./images/five.png" alt="Calligraphy" />
+                    <h3>Calligraphy</h3>
+                    <p>Arabic & modern scripts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== ABOUT ARTIST ====================== -->
+    <section class="section about-artist">
+        <div class="container about-artist-grid">
+            <div class="about-artist-image">
+                <img src="./images/six.png" alt="Art gallery creative space" />
+            </div>
+            <div class="about-artist-content">
+                <span class="badge">Vision</span>
+                <h2>Warda Waseem · Creative Philosophy</h2>
+                <p>With a deep reverence for tradition and a fearless embrace of the contemporary, Warda Waseem transforms canvas, wood, and clay into visual poetry. Each artwork is a dialogue between the artist and the observer — timeless, evocative, and uniquely human.</p>
+                <p><strong>Mission:</strong> To make fine art accessible, personal, and everlasting. <br /><strong>Vision:</strong> A world where art is not just seen, but felt.</p>
+                <a href="about.html" class="btn btn-primary">Discover the Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== WHY CHOOSE US ====================== -->
+    <section class="section why-choose">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Excellence in every detail</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Original Handmade Art</h3>
+                    <p>Every piece is crafted by hand with passion and precision.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Museum Quality</h3>
+                    <p>Archival materials, gallery-grade presentation.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-box"></i>
+                    <h3>Secure Packaging</h3>
+                    <p>Custom crating and insured shipping.</p>
+                </div>
+                <div class="why-card">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Worldwide Shipping</h3>
+                    <p>Seamless delivery to over 50 countries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== TESTIMONIALS ====================== -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Collector's Voice</h2>
+                <p>What our patrons say</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <p>"Warda's paintings have transformed our living space. Pure elegance."</p>
+                    <h4>— A. Khan</h4>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <p>"The sculpture we commissioned is the heart of our collection."</p>
+                    <h4>— S. Ahmed</h4>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <p>"Exquisite craftsmanship and personal attention to every detail."</p>
+                    <h4>— M. Ali</h4>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <p>"A gallery experience from home. Absolutely love my calligraphy piece."</p>
+                    <h4>— F. Noor</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>Warda Waseem</h3>
+                <p>Fine Art Gallery · Karachi, Pakistan</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="shop.html?category=paintings">Paintings</a></li>
+                    <li><a href="shop.html?category=pencil-sketch">Pencil Sketch</a></li>
+                    <li><a href="shop.html?category=sculpture">Sculpture</a></li>
+                    <li><a href="shop.html?category=wood-carving">Wood Carving</a></li>
+                    <li><a href="shop.html?category=calligraphy">Calligraphy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +92 300 1234567</li>
+                    <li><i class="fas fa-envelope"></i> hello@wardawaseemart.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Karachi, Pakistan</li>
+                    <li><i class="fas fa-clock"></i> Mon–Sat 10am–8pm</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
